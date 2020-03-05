@@ -245,7 +245,7 @@ func (lb *lbBalancer) newRemoteBalancerCCWrapper() {
 	//
 	// The grpclb server addresses will set field ServerName, and creds will
 	// receive ServerName as authority.
-	cc, err := grpc.DialContext(context.Background(), "grpclb.subClientConn", dopts...)
+	cc, err := grpc.DialContext(context.Background(), lb.target, dopts...)
 	if err != nil {
 		grpclog.Fatalf("failed to dial: %v", err)
 	}
